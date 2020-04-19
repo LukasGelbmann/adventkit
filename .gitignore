@@ -1,0 +1,5 @@
+# Puzzle input files
+/advent????/input/
+
+# Cached Python bytecode files
+__pycache__/
