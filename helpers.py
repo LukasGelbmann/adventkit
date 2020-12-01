@@ -52,6 +52,20 @@ def last(iterable):
     return tail[0]
 
 
+def product(iterable):
+    """Return the product of an iterable's items.
+
+    An empty iterable has a product of 1, the multiplicative identity.
+
+    Example: product([1, 2, 3, 4]) --> 24
+    """
+
+    result = 1
+    for item in iterable:
+        result *= item
+    return result
+
+
 def repeatedly_call(func, *args):
     """Return an infinite iterator that calls `func` to produce items."""
     return itertools.starmap(func, itertools.repeat(args))
