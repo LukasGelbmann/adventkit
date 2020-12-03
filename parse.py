@@ -10,7 +10,7 @@ def ints(text):
     minus sign, unless it directly follows another number, in which case it's
     treated as a separator.
 
-    Example: ints('-3 T-4,5-10') --> [3, -4, 5, 10]
+    Example: ints('-3 T-4,5-10') --> [-3, -4, 5, 10]
     """
 
     pattern = r'(?<!\d)-?\d+'
