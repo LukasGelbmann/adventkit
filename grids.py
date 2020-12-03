@@ -117,8 +117,11 @@ UP = Vector2D(0, -1)
 DOWN = Vector2D(0, +1)
 
 
-def select(target, map_string):
-    r"""Return a set of the points marked with the target character.
+def select(target, lines):
+    """Return a set of the points marked with the target character.
+
+    `lines` can be either a string or an iterable of strings.  The return value
+    is a set of Vector2D instances.
 
     Take, for example, a map looking like this:
 
@@ -126,16 +129,47 @@ def select(target, map_string):
         .XO
         ..X
 
-    Here, select('O', 'X.O\n.XO\n..X') returns the set {Vector2D(x=2, y=0),
-    Vector2D(x=2, y=1)}."""
+    Selecting all points marked with an 'O' works as follows:
 
-    lines = map_string.splitlines()
+        select('O', ['X.O', '.XO', '..X'])
+        --> {Vector2D(x=2, y=0), Vector2D(x=2, y=1)}
+
+    See also select_and_measure()."""
+
+    if isinstance(lines, str):
+        lines = lines.splitlines()
     return {
         Vector2D(x, y)
         for y, line in enumerate(lines)
         for x, char in enumerate(line)
         if char == target
     }
+
+
+def select_and_measure(target, lines):
+    r"""Return a tuple containing a set of selected points and the map's size.
+
+    `lines` can be either a string or an iterable of strings.  In the returned
+    pair, both the points and the size are Vector2D instances.
+
+    As an example, take a map looking like this:
+
+        .O
+        ..O
+        X
+
+    The points marked with an 'X' can be selected as follows:
+
+        select_and_measure('X', '.O\n..O\nX')
+        --> ({Vector2D(x=0, y=2)}, Vector2D(x=3, y=3))
+
+    If the size of the map isn't needed, use select() instead."""
+
+    if isinstance(lines, str):
+        lines = lines.splitlines()
+    width = max((len(line) for line in lines), default=0)
+    height = len(lines)
+    return select(target, lines), Vector2D(width, height)
 
 
 def show(grid, symbols):
