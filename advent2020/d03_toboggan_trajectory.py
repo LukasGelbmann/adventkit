@@ -13,7 +13,7 @@ def solve(puzzle_input):
 def count_encounters(slope, trees, size):
     position = grids.ORIGIN_2D
     count = 0
-    while position.y <= size.y:
+    while position.y < size.y:
         position += slope
         if (position.x % size.x, position.y) in trees:
             count += 1
