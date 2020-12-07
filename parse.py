@@ -46,7 +46,8 @@ def mixed_values(text):
 def int_table(text):
     """Return a table (a list of lists) of integers, one row per line.
 
-    See ints() for details on the handling of hyphen-minus characters."""
+    See ints() for details on the handling of hyphen-minus characters.
+    """
 
     return [ints(line) for line in text.splitlines()]
 
@@ -79,7 +80,7 @@ def compact_mixed_table(line):
 def compact_mixed_tables(text):
     """Return a list of tables of parsed values.
 
-    That is a list of lists of lists.  Each table (list of lists) is parsed
+    That is a list of lists of lists. Each table (list of lists) is parsed
     from a single line of the input string.
 
     See mixed_values() for details on the handling of hyphen-minus characters.

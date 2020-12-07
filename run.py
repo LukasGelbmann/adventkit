@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
 
-"""This program runs the solver for an Advent of Code puzzle.
+"""A program that runs the solver for an Advent of Code puzzle.
 
-In this project, each puzzle is solved in a module of its own.  Each of these
+In this project, each puzzle is solved in a module of its own. Each of these
 solver modules contains a function called solve(), which takes the puzzle input
-as a string argument and prints the solutions to stdout.  The word 'solver' can
+as a string argument and prints the solutions to stdout. The word 'solver' can
 refer to a solver module or the solve() function inside it.
 
 The solver modules of the same Advent of Code edition are grouped together in
-packages.  For example, the package `advent2019` contains the solvers for
-Advent of Code 2019.  The solver modules have names starting with a 'd'
+packages. For example, the package `advent2019` contains the solvers for Advent
+of Code 2019. The solver modules have names starting with the character 'd'
 (standing for 'day'), followed by the day of the advent calendar.
 
-The files containing the puzzle input follow a similar naming scheme.  For
+The files containing the puzzle input follow a similar naming scheme. For
 example, the input for day 1 of Advent of Code 2019 should be stored in
-`advent2019/input/d01.txt`."""
+`advent2019/input/d01.txt`.
+"""
 
 # This import ensures that this program can print a nice error message if
-# accidentally run in Python 2.7.  For the same purpose, this program shouldn't
+# accidentally run in Python 2.7. For the same purpose, this program shouldn't
 # use language features that result in a syntax error in Python 2.7.
 from __future__ import print_function
 
@@ -44,7 +45,7 @@ def check_python_version():
 def import_solver(package, day):
     """Import and return a solver module for a day of the Advent calendar.
 
-    Return None if the module can't be found.  No ImportError is raised in this
+    Return None if the module can't be found. No ImportError is raised in this
     situation in order to distinguish it from an error occurring during import.
     """
 
@@ -59,7 +60,8 @@ def import_solver(package, day):
 def read_input(year, day, base_path):
     """Return the input for a day of the Advent calender.
 
-    Raise an OSError if the input file can't be read."""
+    Raise an OSError if the input file can't be read.
+    """
 
     filename = 'd' + day + '.txt'
     path = os.path.join(base_path, 'advent' + year, 'input', filename)
@@ -86,7 +88,8 @@ def day_arg(value):
 def parse_args():
     """Parse and return the command-line arguments.
 
-    On error, print a usage message and exit."""
+    On error, print a usage message and exit.
+    """
 
     parser = argparse.ArgumentParser()
     parser.add_argument('year', type=year_arg, help="e.g., 2019")

@@ -1,11 +1,12 @@
 """Tools for working with grids, vectors, and points in space.
 
 This module defines the class Vector2D, which can be used to simplify
-operations in two-dimensional space such as vector addition.  Instances of
+operations in two-dimensional space such as vector addition. Instances of
 Vector2D can also be used to represent points in 2D space.
 
 In the context of this module, a grid is a mapping from points to values (of
-any type)."""
+any type).
+"""
 
 import numbers
 import typing
@@ -15,11 +16,11 @@ class Vector2D(typing.NamedTuple):
     """An immutable vector or point in 2D space.
 
     A Vector2D instance is fully characterized by its X-value and Y-value, both
-    of which are real numbers, at least conventionally.  They can be integers,
+    of which are real numbers, at least conventionally. They can be integers,
     floats, fractions, decimals, or any other type of real number.
 
     When using this class, by convention, the X-axis goes from left to right,
-    with small numbers at the left.  The Y-axis goes from top to bottom, with
+    with small numbers at the left. The Y-axis goes from top to bottom, with
     small numbers at the top.
 
     A Vector2D instance can represent either a vector or a point in 2D space.
@@ -27,11 +28,12 @@ class Vector2D(typing.NamedTuple):
     one-dimensional space.
 
     Vector2D is a subclass of the tuple class, and in many cases, the tuple
-    (x, y) can be used interchangeably with the value Vector2D(x, y).  The two
-    behave the same in all comparison operations.  In particular, (x, y) is
-    equal to Vector2D(x, y).  Like (x, y), Vector2D(x, y) is an iterable with
-    two items, x and y.  Methods of Vector2D that take another vector as an
-    argument work with tuples as well."""
+    (x, y) can be used interchangeably with the value Vector2D(x, y). The two
+    behave the same in all comparison operations. In particular, (x, y) is
+    equal to Vector2D(x, y). Like (x, y), Vector2D(x, y) is an iterable with
+    two items, x and y. Methods of Vector2D that take another vector as an
+    argument work with tuples as well.
+    """
 
     x: numbers.Real
     y: numbers.Real
@@ -72,23 +74,23 @@ class Vector2D(typing.NamedTuple):
         return Vector2D(-self.x, -self.y)
 
     def __mul__(self, value):
-        """Return self*value, where value is a scalar."""
+        """Return self*value, where `value` is a scalar."""
         return Vector2D(self.x * value, self.y * value)
 
     def __rmul__(self, value):
-        """Return value*self, where value is a scalar."""
+        """Return value*self, where `value` is a scalar."""
         return Vector2D(value * self.x, value * self.y)
 
     def __truediv__(self, value):
-        """Return self/value, where value is a scalar."""
+        """Return self/value, where `value` is a scalar."""
         return Vector2D(self.x / value, self.y / value)
 
     def __floordiv__(self, value):
-        """Return self//value, where value is a scalar."""
+        """Return self//value, where `value` is a scalar."""
         return Vector2D(self.x // value, self.y // value)
 
     def __mod__(self, value):
-        """Return self%value, where value is a scalar."""
+        """Return self%value, where `value` is a scalar."""
         return Vector2D(self.x % value, self.y % value)
 
     def __bool__(self):
@@ -120,7 +122,7 @@ DOWN = Vector2D(0, +1)
 def select(target, lines):
     """Return a set of the points marked with the target character.
 
-    `lines` can be either a string or an iterable of strings.  The return value
+    `lines` can be either a string or an iterable of strings. The return value
     is a set of Vector2D instances.
 
     Take, for example, a map looking like this:
@@ -134,7 +136,8 @@ def select(target, lines):
         select('O', ['X.O', '.XO', '..X'])
         --> {Vector2D(x=2, y=0), Vector2D(x=2, y=1)}
 
-    See also select_and_measure()."""
+    See also select_and_measure().
+    """
 
     if isinstance(lines, str):
         lines = lines.splitlines()
@@ -149,7 +152,7 @@ def select(target, lines):
 def select_and_measure(target, lines):
     r"""Return a tuple containing a set of selected points and the map's size.
 
-    `lines` can be either a string or an iterable of strings.  In the returned
+    `lines` can be either a string or an iterable of strings. In the returned
     pair, both the points and the size are Vector2D instances.
 
     As an example, take a map looking like this:
@@ -163,7 +166,8 @@ def select_and_measure(target, lines):
         select_and_measure('X', '.O\n..O\nX')
         --> ({Vector2D(x=0, y=2)}, Vector2D(x=3, y=3))
 
-    If the size of the map isn't needed, use select() instead."""
+    If the size of the map isn't needed, select() can be used instead.
+    """
 
     if isinstance(lines, str):
         lines = lines.splitlines()
@@ -175,11 +179,11 @@ def select_and_measure(target, lines):
 def show(grid, symbols):
     """Print a visual representation of a grid.
 
-    `grid` is a mapping from 2D points to values (of any type).  `symbols` is a
+    `grid` is a mapping from 2D points to values (of any type). `symbols` is a
     mapping from values to characters visualizing these values.
 
-    Values not present in `symbols` are shown as spaces.  Points not present in
-    the grid are treated as if they had the value None.  Neighboring points
+    Values not present in `symbols` are shown as spaces. Points not present in
+    the grid are treated as if they had the value None. Neighboring points
     within each row are separated by spaces.
 
     For example, show({(0, 0): 7, (1, 0): 8, (1, 1): 8}, {7: '>', 8: '|'})
@@ -205,8 +209,9 @@ def move_left(point):
     """Return a copy of `point`, moved left along the X-axis by 1.
 
     This function returns a tuple, not a Vector2D instance, and should only be
-    used if performance is essential.  Otherwise, the recommended alternative
-    is to write `point + LEFT`."""
+    used if performance is essential. Otherwise, the recommended alternative is
+    to write `point + LEFT`.
+    """
 
     x, y = point
     return x - 1, y
@@ -215,7 +220,8 @@ def move_left(point):
 def move_right(point):
     """Return a copy of `point`, moved right along the X-axis by 1.
 
-    The caveats for move_left() apply here as well."""
+    The caveats for move_left() apply here as well.
+    """
 
     x, y = point
     return x + 1, y
@@ -224,7 +230,8 @@ def move_right(point):
 def move_up(point):
     """Return a copy of `point`, moved up along the Y-axis by 1.
 
-    The caveats for move_left() apply here as well."""
+    The caveats for move_left() apply here as well.
+    """
 
     x, y = point
     return x, y - 1
@@ -233,7 +240,8 @@ def move_up(point):
 def move_down(point):
     """Return a copy of `point`, moved down along the Y-axis by 1.
 
-    The caveats for move_left() apply here as well."""
+    The caveats for move_left() apply here as well.
+    """
 
     x, y = point
     return x, y + 1
