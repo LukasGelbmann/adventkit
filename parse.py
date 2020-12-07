@@ -43,47 +43,68 @@ def mixed_values(text):
     ]
 
 
-def int_table(text):
-    """Return a table (a list of lists) of integers, one row per line.
+def int_rows(text, *, row_sep=None):
+    """Parse a table and return a list of lists of extracted integers.
+
+    `row_sep` is a string that separates rows in `text`. If `row_sep` is None,
+    each line in `text` represents a row.
 
     See ints() for details on the handling of hyphen-minus characters.
     """
 
-    return [ints(line) for line in text.splitlines()]
+    raw_rows = _split(text, row_sep)
+    return [ints(row) for row in raw_rows]
 
 
-def string_table(text):
-    """Return a table of extracted alphanumeric strings, one row per line."""
-    return [strings(line) for line in text.splitlines()]
+def string_rows(text, *, row_sep=None):
+    """Parse a table and return a list of lists of alphanumeric strings.
 
-
-def mixed_table(text):
-    """Return a table of integers and alphabetic strings, one row per line.
-
-    See mixed_values() for details on the handling of hyphen-minus characters.
+    `row_sep` is a string that separates rows in `text`. If `row_sep` is None,
+    each line in `text` represents a row.
     """
 
-    return [mixed_values(line) for line in text.splitlines()]
+    raw_rows = _split(text, row_sep)
+    return [strings(row) for row in raw_rows]
 
 
-def compact_mixed_table(line):
-    """Return a table (lists of lists) of parsed values.
+def mixed_rows(text, *, row_sep=None):
+    """Parse a table and return a list of lists of integers and strings.
 
-    The table is parsed from a single line, with rows separated by commas.
+    `row_sep` is a string that separates rows in `text`. If `row_sep` is None,
+    each line in `text` represents a row.
 
-    See mixed_values() for details on the handling of hyphen-minus characters.
+    See mixed_values() for details on the extraction of values from `text`.
     """
 
-    return [mixed_values(row) for row in line.split(',')]
+    raw_rows = _split(text, row_sep)
+    return [mixed_values(row) for row in raw_rows]
 
 
-def compact_mixed_tables(text):
+def mixed_tables(text, *, table_sep=None, row_sep=None):
     """Return a list of tables of parsed values.
 
-    That is a list of lists of lists. Each table (list of lists) is parsed
-    from a single line of the input string.
+    That is a list of lists of lists. The elements of the innermost lists are
+    integers and strings, extracted by the mixed_values() function.
 
-    See mixed_values() for details on the handling of hyphen-minus characters.
+    At least one of `table_sep` and `row_sep` must be given and not None.
+
+    `table_sep` is a string that separates tables in `text`. If `table_sep` is
+    None, each line in `text` represents a table.
+
+    `row_sep` is a string that separates rows in `text`. If `row_sep` is None,
+    each line in `text` represents a table row.
     """
 
-    return [compact_mixed_table(line) for line in text.splitlines()]
+    if table_sep is None and row_sep is None:
+        raise ValueError("mixed_tables() needs table_sep or row_sep")
+
+    raw_tables = _split(text, table_sep)
+    return [mixed_rows(line, row_sep=row_sep) for line in raw_tables]
+
+
+def _split(text, sep=None):
+    """Split a string by delimiter or into lines and return a list of parts."""
+
+    if sep is None:
+        return text.splitlines()
+    return text.split(sep)

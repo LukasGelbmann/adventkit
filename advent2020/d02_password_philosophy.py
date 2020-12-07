@@ -2,7 +2,7 @@ import parse
 
 
 def solve(puzzle_input):
-    rows = parse.mixed_table(puzzle_input)
+    rows = parse.mixed_rows(puzzle_input)
 
     first_count = 0
     for min_appearances, max_appearances, letter, password in rows:

@@ -3,7 +3,7 @@ import parse
 
 
 def solve(puzzle_input):
-    path_a, path_b = parse.compact_mixed_tables(puzzle_input)
+    path_a, path_b = parse.mixed_tables(puzzle_input, row_sep=',')
     visits_a = visits(path_a)
     visits_b = visits(path_b)
     intersections = {square for square in visits_a if square in visits_b}
