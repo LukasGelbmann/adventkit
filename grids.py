@@ -4,8 +4,10 @@ This module defines the class Vector2D, which can be used to simplify
 operations in two-dimensional space such as vector addition. Instances of
 Vector2D can also be used to represent points in 2D space.
 
-In the context of this module, a grid is a mapping from points to values (of
-any type).
+Coordinate values of points and vectors can generally be any real number. For
+many applications, however, it is natural to use only integral points. In the
+context of this module, a *grid* is a mapping from integral points to values
+of any type.
 """
 
 import numbers
@@ -103,6 +105,24 @@ class Vector2D(typing.NamedTuple):
         other_x, other_y = other
         return abs(self.x - other_x) + abs(self.y - other_y)
 
+    def neighbors(self):
+        """Return a list of all eight neighbors, orthogonal and diagonal.
+
+        This method assumes a grid spacing of 1.
+        """
+
+        x, y = self.x, self.y
+        return [
+            Vector2D(x - 1, y - 1),
+            Vector2D(x - 1, y),
+            Vector2D(x - 1, y + 1),
+            Vector2D(x, y - 1),
+            Vector2D(x, y + 1),
+            Vector2D(x + 1, y - 1),
+            Vector2D(x + 1, y),
+            Vector2D(x + 1, y + 1),
+        ]
+
     def rotate_left(self):
         """Return a copy of this vector, rotated left by 90 degrees."""
         return Vector2D(self.y, -self.x)
@@ -158,13 +178,13 @@ def select_and_measure(target, lines):
     As an example, take a map looking like this:
 
         .O
-        ..O
+        X.O
         X
 
     The points marked with an 'X' can be selected as follows:
 
-        select_and_measure('X', '.O\n..O\nX')
-        --> ({Vector2D(x=0, y=2)}, Vector2D(x=3, y=3))
+        select_and_measure('X', '.O\nX.O\nX')
+        --> ({Vector2D(x=0, y=1), Vector2D(x=0, y=2)}, Vector2D(x=3, y=3))
 
     If the size of the map isn't needed, select() can be used instead.
     """
@@ -179,12 +199,14 @@ def select_and_measure(target, lines):
 def show(grid, symbols):
     """Print a visual representation of a grid.
 
-    `grid` is a mapping from 2D points to values (of any type). `symbols` is a
-    mapping from values to characters visualizing these values.
+    `grid` is a mapping from 2D integral points (tuples or Vector2D instances)
+    to values of any type. `symbols` is a mapping from values to characters
+    visualizing these values.
 
-    Values not present in `symbols` are shown as spaces. Points not present in
-    the grid are treated as if they had the value None. Neighboring points
-    within each row are separated by spaces.
+    Values not present in `symbols` are shown as spaces, or not depicted at all
+    if they're out of frame. Points not present in the grid are treated as if
+    they had the value None. Neighboring points within each row are separated
+    by spaces.
 
     For example, show({(0, 0): 7, (1, 0): 8, (1, 1): 8}, {7: '>', 8: '|'})
     prints the following to stdout:
