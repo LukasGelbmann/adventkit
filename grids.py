@@ -123,20 +123,42 @@ class Vector2D(typing.NamedTuple):
             Vector2D(x + 1, y + 1),
         ]
 
-    def rotate_left(self):
-        """Return a copy of this vector, rotated left by 90 degrees."""
-        return Vector2D(self.y, -self.x)
+    def rotate_left(self, times=1):
+        """Return a copy of this vector, rotated left a given number of times.
 
-    def rotate_right(self):
-        """Return a copy of this vector, rotated right by 90 degrees."""
-        return Vector2D(-self.y, self.x)
+        Each rotation turns the vector by 90 degrees.
+        """
+
+        times %= 4
+        if times == 1:
+            return Vector2D(self.y, -self.x)
+        if times == 2:
+            return -self
+        if times == 3:
+            return Vector2D(-self.y, self.x)
+        return self
+
+    def rotate_right(self, times=1):
+        """Return a copy of this vector, rotated right a given number of times.
+
+        Each rotation turns the vector by 90 degrees.
+        """
+
+        times %= 4
+        if times == 1:
+            return Vector2D(-self.y, self.x)
+        if times == 2:
+            return -self
+        if times == 3:
+            return Vector2D(self.y, -self.x)
+        return self
 
 
 ORIGIN_2D = Vector2D(0, 0)
-LEFT = Vector2D(-1, 0)
-RIGHT = Vector2D(+1, 0)
-UP = Vector2D(0, -1)
-DOWN = Vector2D(0, +1)
+LEFT = WEST = Vector2D(-1, 0)
+RIGHT = EAST = Vector2D(+1, 0)
+UP = NORTH = Vector2D(0, -1)
+DOWN = SOUTH = Vector2D(0, +1)
 
 
 def select(target, lines):
