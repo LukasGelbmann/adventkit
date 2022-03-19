@@ -10,7 +10,8 @@ Requirements
 
 -   Python 3.6+
 -   Puzzle input files placed in the right locations: the input for day
-    1 of Advent of Code 2019 is read from `advent2019/input/d01.txt`.
+    1 of Advent of Code 2019 is read from
+    `src/advent2019/input/d01.txt`.
 
 Optional:
 
@@ -21,12 +22,12 @@ Optional:
 How to run
 ----------
 
--   Run a single day's solver: `python3 run.py 2019 10` (or
-    `./run.sh 2019 10`)
--   Run all solvers: `./run.sh`
--   Run all solvers from one year: `./run.sh 2019`
+-   Run a single day's solver: `python3 src/run.py 2019 10` (or
+    `src/run.sh 2019 10`)
+-   Run all solvers: `src/run.sh`
+-   Run all solvers from one year: `src/run.sh 2019`
 
-When invoked with the optional argument `--time`, `run.sh` print the
+When invoked with the optional argument `--time`, `src/run.sh` print the
 execution time for each day. If the command `pypy3` invokes a suitable
-version of PyPy, `run.sh` uses it for any solvers that are expected to
-run faster under PyPy than CPython.
+version of PyPy, `src/run.sh` uses it for any solvers that are expected
+to run faster under PyPy than CPython.
