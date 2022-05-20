@@ -97,7 +97,7 @@ run_day() {
     fi
 
     year_dir_="${3%/*}"
-    year_="${year_dir_#advent}"
+    year_="${year_dir_#year}"
     day_="${3#*/d}"
     day_="${day_#0}"
     day_="${day_%%_*}"
@@ -196,12 +196,12 @@ main() {
     fast="$(fast_python)"
 
     if [ "$year" ]; then
-        year_dir="advent${year}"
+        year_dir="year${year}"
         for program in "$year_dir"/d??*.py; do
             run_day "$mode" "$fast" "$program" || return
         done
     else
-        for program in advent????/d??*.py; do
+        for program in year????/d??*.py; do
             run_day "$mode" "$fast" "$program" || return
         done
     fi

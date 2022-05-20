@@ -1,7 +1,7 @@
 import grids
 import helpers
 import parse
-from advent2019.d09_sensor_boost import run
+from year2019.d09_sensor_boost import run
 
 
 BLACK = 0

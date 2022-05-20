@@ -8,13 +8,13 @@ as a string argument and prints the solutions to stdout. The word 'solver' can
 refer to a solver module or the solve() function inside it.
 
 The solver modules of the same Advent of Code edition are grouped together in
-packages. For example, the package `advent2019` contains the solvers for Advent
+packages. For example, the package `year2019` contains the solvers for Advent
 of Code 2019. The solver modules have names starting with the character 'd'
 (standing for 'day'), followed by the day of the advent calendar.
 
 The files containing the puzzle input follow a similar naming scheme. For
 example, the input for day 1 of Advent of Code 2019 should be stored in
-`advent2019/input/d01.txt`.
+`year2019/input/d01.txt`.
 """
 
 # This import ensures that this program can print a nice error message if
@@ -64,7 +64,7 @@ def read_input(year, day, base_path):
     """
 
     filename = 'd' + day + '.txt'
-    path = os.path.join(base_path, 'advent' + year, 'input', filename)
+    path = os.path.join(base_path, 'year' + year, 'input', filename)
     with open(path, encoding='ascii') as file:
         return file.read()
 
@@ -105,7 +105,7 @@ def main():
     base_path = os.path.dirname(os.path.realpath(__file__))
 
     try:
-        package = importlib.import_module('advent' + args.year)
+        package = importlib.import_module('year' + args.year)
     except ImportError as exc:
         print("Error:", exc, file=sys.stderr)
         return 1

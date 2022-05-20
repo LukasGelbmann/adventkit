@@ -2,7 +2,7 @@ import itertools
 
 import helpers
 import parse
-from advent2019.d05_chance_of_asteroids import run_basic
+from year2019.d05_chance_of_asteroids import run_basic
 
 
 def solve(puzzle_input):

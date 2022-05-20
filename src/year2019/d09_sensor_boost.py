@@ -1,5 +1,5 @@
 import parse
-from advent2019.d05_chance_of_asteroids import arg_addr, run_basic
+from year2019.d05_chance_of_asteroids import arg_addr, run_basic
 
 
 def solve(puzzle_input):
