@@ -89,16 +89,17 @@ can_use_pypy() { (
 run_day() {
     # $1: time mode
     # $2: fast Python
-    # $3: program path
+    # $3: base path
+    # $4: program path
 
-    if [ ! -e "$3" ]; then
+    if [ ! -e "$4" ]; then
         echo "Error: no programs found" >&2
         return 1
     fi
 
-    year_dir_="${3%/*}"
-    year_="${year_dir_#year}"
-    day_="${3#*/d}"
+    year_="${4##*/year}"
+    year_="${year_%%/*}"
+    day_="${4##*/d}"
     day_="${day_#0}"
     day_="${day_%%_*}"
 
@@ -109,7 +110,7 @@ run_day() {
     fi
 
     printf "${HEADING}# %d, day %d #${END_HEADING}\n" "$year_" "$day_"
-    solve "$1" "$python_" "$year_" "$day_"
+    solve "$1" "$python_" "$3" "$year_" "$day_"
     ret=$?
     echo
     return "$ret"
@@ -119,17 +120,18 @@ run_day() {
 solve() {
     # $1: time mode
     # $2: Python command
-    # $3: year
-    # $4: day
+    # $3: base path
+    # $4: year
+    # $5: day
 
     if [ "$1" = 'env-time' ]; then
-        env time --format="(%es)" "$2" run.py "$3" "$4"
+        env time --format="(%es)" "$2" "$3/run.py" "$4" "$5"
     elif [ "$1" = 'time-p' ]; then
-        time -p "$2" run.py "$3" "$4"
+        time -p "$2" "$3/run.py" "$4" "$5"
     elif [ "$1" = 'time' ]; then
-        time "$2" run.py "$3" "$4"
+        time "$2" "$3/run.py" "$4" "$5"
     else
-        "$2" run.py "$3" "$4"
+        "$2" "$3/run.py" "$4" "$5"
     fi
 }
 
@@ -140,7 +142,6 @@ solve() {
 main() {
     real_path="$(readlink -f -- "$0" 2>/dev/null)" || real_path="$0"
     base_path="$(dirname -- "$real_path")" || return
-    cd -- "$base_path" || return
 
     # Parse command-line arguments.
     year=''
@@ -189,7 +190,7 @@ main() {
         else
             python='python3'
         fi
-        solve "$mode" "$python" "$year" "$day"
+        solve "$mode" "$python" "$base_path" "$year" "$day"
         return
     fi
 
@@ -197,12 +198,12 @@ main() {
 
     if [ "$year" ]; then
         year_dir="year${year}"
-        for program in "$year_dir"/d??*.py; do
-            run_day "$mode" "$fast" "$program" || return
+        for program in "$base_path/$year_dir"/d??*.py; do
+            run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     else
-        for program in year????/d??*.py; do
-            run_day "$mode" "$fast" "$program" || return
+        for program in "$base_path"/year????/d??*.py; do
+            run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     fi
 }

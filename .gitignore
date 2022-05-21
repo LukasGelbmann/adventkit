@@ -1,5 +1,2 @@
-# Puzzle input files
-/src/year????/input/
-
 # Cached Python bytecode files
 __pycache__/

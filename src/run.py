@@ -14,7 +14,7 @@ of Code 2019. The solver modules have names starting with the character 'd'
 
 The files containing the puzzle input follow a similar naming scheme. For
 example, the input for day 1 of Advent of Code 2019 should be stored in
-`year2019/input/d01.txt`.
+`input/year2019/d01.txt` (relative to the current working directory).
 """
 
 # This import ensures that this program can print a nice error message if
@@ -57,14 +57,14 @@ def import_solver(package, day):
     return None
 
 
-def read_input(year, day, base_path):
+def read_input(year, day):
     """Return the input for a day of the Advent calender.
 
     Raise an OSError if the input file can't be read.
     """
 
     filename = 'd' + day + '.txt'
-    path = os.path.join(base_path, 'year' + year, 'input', filename)
+    path = os.path.join('input', 'year' + year, filename)
     with open(path, encoding='ascii') as file:
         return file.read()
 
@@ -102,7 +102,6 @@ def main():
 
     check_python_version()
     args = parse_args()
-    base_path = os.path.dirname(os.path.realpath(__file__))
 
     try:
         package = importlib.import_module('year' + args.year)
@@ -119,7 +118,7 @@ def main():
         return 1
 
     try:
-        puzzle_input = read_input(args.year, args.day, base_path)
+        puzzle_input = read_input(args.year, args.day)
     except OSError as exc:
         print("Error:", exc, file=sys.stderr)
         return 1

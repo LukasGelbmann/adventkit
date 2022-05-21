@@ -10,7 +10,8 @@ Requirements
 
 -   Python 3.6+
 -   Puzzle input files placed in the right locations: the input for day
-    1 of Advent of Code 2019 is read from `src/year2019/input/d01.txt`.
+    1 of Advent of Code 2019 is read from `input/year2019/d01.txt`
+    (relative to the current working directory).
 
 Optional:
 
