@@ -124,14 +124,15 @@ solve() {
     # $4: year
     # $5: day
 
+    run_file="$3/adventkit/run.py"
     if [ "$1" = 'env-time' ]; then
-        env time --format="(%es)" "$2" "$3/run.py" "$4" "$5"
+        env time --format="(%es)" "$2" "$run_file" "$4" "$5"
     elif [ "$1" = 'time-p' ]; then
-        time -p "$2" "$3/run.py" "$4" "$5"
+        time -p "$2" "$run_file" "$4" "$5"
     elif [ "$1" = 'time' ]; then
-        time "$2" "$3/run.py" "$4" "$5"
+        time "$2" "$run_file" "$4" "$5"
     else
-        "$2" "$3/run.py" "$4" "$5"
+        "$2" "$run_file" "$4" "$5"
     fi
 }
 
@@ -198,11 +199,11 @@ main() {
 
     if [ "$year" ]; then
         year_dir="year${year}"
-        for program in "$base_path/$year_dir"/d??*.py; do
+        for program in "$base_path/adventkit/$year_dir"/d??*.py; do
             run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     else
-        for program in "$base_path"/year????/d??*.py; do
+        for program in "$base_path/adventkit/"year????/d??*.py; do
             run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     fi
