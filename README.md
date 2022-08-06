@@ -22,7 +22,7 @@ Optional:
 How to run
 ----------
 
--   Run a single day's solver: `python3 src/adventkit/run.py 2019 10`
+-   Run a single day's solver: `python3 src/adventkit/solve.py 2019 10`
     (or `src/run.sh 2019 10`)
 -   Run all solvers: `src/run.sh`
 -   Run all solvers from one year: `src/run.sh 2019`
