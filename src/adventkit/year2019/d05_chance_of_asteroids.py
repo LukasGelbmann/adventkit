@@ -1,7 +1,6 @@
 import collections
 
-import helpers
-import parse
+from adventkit import helpers, parse
 
 
 def solve(puzzle_input):

@@ -3,7 +3,7 @@
 # This script runs puzzle solvers.
 #
 # One advantage of having a shell script to run solvers, rather than just
-# running `solve.py` directly, is that this script can decide on the fly which
+# running `run.py` directly, is that this script can decide on the fly which
 # Python implementation to use.
 
 set -o nounset
@@ -124,15 +124,14 @@ solve() {
     # $4: year
     # $5: day
 
-    run_file="$3/adventkit/solve.py"
     if [ "$1" = 'env-time' ]; then
-        env time --format="(%es)" "$2" "$run_file" "$4" "$5"
+        env time --format="(%es)" "$2" "$3/run.py" "$4" "$5"
     elif [ "$1" = 'time-p' ]; then
-        time -p "$2" "$run_file" "$4" "$5"
+        time -p "$2" "$3/run.py" "$4" "$5"
     elif [ "$1" = 'time' ]; then
-        time "$2" "$run_file" "$4" "$5"
+        time "$2" "$3/run.py" "$4" "$5"
     else
-        "$2" "$run_file" "$4" "$5"
+        "$2" "$3/run.py" "$4" "$5"
     fi
 }
 

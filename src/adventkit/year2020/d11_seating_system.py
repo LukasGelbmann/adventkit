@@ -1,4 +1,4 @@
-import grids
+from adventkit import grids
 
 
 def solve(puzzle_input):

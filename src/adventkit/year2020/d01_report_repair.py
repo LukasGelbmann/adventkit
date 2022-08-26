@@ -1,7 +1,6 @@
 import itertools
 
-import helpers
-import parse
+from adventkit import helpers, parse
 
 
 def solve(puzzle_input):

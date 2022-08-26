@@ -1,4 +1,4 @@
-import parse
+from adventkit import parse
 
 
 def solve(puzzle_input):

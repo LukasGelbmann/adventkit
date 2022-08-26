@@ -1,5 +1,4 @@
-import grids
-import parse
+from adventkit import grids, parse
 
 
 def solve(puzzle_input):
