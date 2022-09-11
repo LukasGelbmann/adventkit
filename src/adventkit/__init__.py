@@ -14,3 +14,5 @@ The files containing the puzzle input follow a similar naming scheme. For
 example, the input for day 1 of Advent of Code 2019 should be stored in
 `input/year2019/d01.txt` (relative to the current working directory).
 """
+
+from ._version import __version__

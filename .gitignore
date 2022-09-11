@@ -1,2 +1,5 @@
 # Cached Python bytecode files
 __pycache__/
+
+# Built distributions
+/dist/

@@ -1,9 +1,19 @@
-Advent of Code in Python
-========================
+Adventkit -- Advent of Code in Python
+=====================================
 
 These are my solutions in Python to some of the [Advent of Code
 puzzles](https://adventofcode.com). My primary aim is to make the code
 readable, making it fast is a secondary goal.
+
+Installation
+------------
+
+You can install Adventkit using pip:
+
+    pip install adventkit
+
+Alternatively, after cloning the Adventkit repository, the code can be
+run as is.
 
 Requirements
 ------------
@@ -13,17 +23,24 @@ Requirements
     1 of Advent of Code 2019 is read from `input/year2019/d01.txt`
     (relative to the current working directory).
 
-Optional:
+Optional, to run `src/run.sh` after cloning the repository:
 
 -   A POSIX-compliant shell (`/bin/sh`)
 -   A shell command `python3` to run Python 3.6+ (any implementation)
--   A shell command `pypy3` to invoke PyPy 3.6+
+-   If extra speed is desired on selected puzzles: A shell command
+    `pypy3` to invoke PyPy 3.6+
 
 How to run
 ----------
 
--   Run a single day's solver: `python3 src/run.py 2019 10` (or
-    `src/run.sh 2019 10`)
+After installing Adventkit, you can run a single day's solver like this:
+
+    adventkit 2019 10
+
+Cloning the repository gives you more options:
+
+-   Run a single day's solver: `src/run.sh 2019 10` (or
+    `python3 src/run.py 2019 10`)
 -   Run all solvers: `src/run.sh`
 -   Run all solvers from one year: `src/run.sh 2019`
 
