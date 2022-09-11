@@ -2,8 +2,8 @@ Adventkit -- Advent of Code in Python
 =====================================
 
 These are my solutions in Python to some of the [Advent of Code
-puzzles](https://adventofcode.com). My primary aim is to make the code
-readable, making it fast is a secondary goal.
+puzzles](https://adventofcode.com). My goal is to make the code readable
+while also making it reasonably fast.
 
 Installation
 ------------
