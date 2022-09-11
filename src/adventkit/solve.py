@@ -16,11 +16,11 @@ import sys
 def check_python_version():
     """Exit if this process isn't running in the right Python version."""
 
-    minimal = 3, 6
+    minimal = 3, 6, 1
     if sys.version_info < minimal:
-        message = "Error: this is Python {}.{}, need {}.{} or higher".format(
-            sys.version_info.major, sys.version_info.minor, *minimal
-        )
+        template = "Error: this is Python {}.{}.{}, need {}.{}.{} or higher"
+        values = sys.version_info[:3] + minimal
+        message = template.format(*values)
         print(message, file=sys.stderr)
         sys.exit(1)
 

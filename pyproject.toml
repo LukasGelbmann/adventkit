@@ -10,7 +10,7 @@ backend-path = ["packaging"]
 [project]
 name = "adventkit"
 readme = "README.md"
-requires-python = ">= 3.6"
+requires-python = ">= 3.6.1"
 license = {file = "LICENSE.txt"}
 authors = [
     {name = "Lukas Gelbmann", email = "me@lukasgelbmann.com"},
