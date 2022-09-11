@@ -41,7 +41,7 @@ def import_solver(package, day):
 
 
 def read_input(year, day):
-    """Return the input for a day of the Advent calender.
+    """Return the input for a day of the Advent calendar.
 
     Raise an OSError if the input file can't be read.
     """
