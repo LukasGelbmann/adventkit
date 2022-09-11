@@ -1,4 +1,4 @@
-"""A package that solves Advent of Code puzzles.
+"""Solutions to Advent of Code puzzles.
 
 In this project, each puzzle is solved in a module of its own. Each of these
 solver modules contains a function called solve(), which takes the puzzle input
