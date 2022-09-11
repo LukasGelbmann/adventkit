@@ -44,7 +44,7 @@ Cloning the repository gives you more options:
 -   Run all solvers: `src/run.sh`
 -   Run all solvers from one year: `src/run.sh 2019`
 
-When invoked with the optional argument `--time`, `src/run.sh` print the
-execution time for each day. If the command `pypy3` invokes a suitable
-version of PyPy, `src/run.sh` uses it for any solvers that are expected
-to run faster under PyPy than CPython.
+When invoked with the optional argument `--time`, `src/run.sh` prints
+the execution time for each day. If the command `pypy3` invokes a
+suitable version of PyPy, `src/run.sh` uses it for any solvers that are
+expected to run faster under PyPy than CPython.
