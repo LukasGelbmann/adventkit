@@ -35,7 +35,7 @@ classifiers = [
 dynamic = ["version", "description"]
 
 [project.urls]
-source = "https://github.com/LukasGelbmann/adventkit"
+Source = "https://github.com/LukasGelbmann/adventkit"
 
 [project.scripts]
 adventkit = "adventkit.solve:main"
