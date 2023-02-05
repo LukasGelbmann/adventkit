@@ -48,3 +48,11 @@ When invoked with the optional argument `--time`, `src/run.sh` prints
 the execution time for each day. If the command `pypy3` invokes a
 suitable version of PyPy, `src/run.sh` uses it for any solvers that are
 expected to run faster under PyPy than CPython.
+
+Testing
+-------
+
+To run the tests, first install
+[`pytest`](https://pypi.org/project/pytest/) and
+[`pytest-subtests`](https://pypi.org/project/pytest-subtests/), as well
+as your local copy of `adventkit`. Then run the command `pytest`.

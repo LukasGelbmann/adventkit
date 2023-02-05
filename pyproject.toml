@@ -41,5 +41,12 @@ Source = "https://github.com/LukasGelbmann/adventkit"
 adventkit = "adventkit.solve:main"
 
 [tool.flit.sdist]
-include = ["packaging/"]
-exclude = ["packaging/__pycache__/"]
+include = [
+    "packaging/",
+    "tests/*.py",
+    "tests/year*/",
+]
+exclude = [
+    "packaging/__pycache__/",
+    "tests/__pycache__/",
+]
