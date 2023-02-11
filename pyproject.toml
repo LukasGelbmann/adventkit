@@ -45,7 +45,7 @@ adventkit = "adventkit.solve:main"
 
 [tool.flit.sdist]
 include = [
-    "packaging/",
-    "tests/*.py",
-    "tests/year*/",
+    # Use wildcards to avoid matching files and folders starting with a dot.
+    "packaging/**/*.*",
+    "tests/**/*.*",
 ]
