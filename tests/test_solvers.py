@@ -5,7 +5,10 @@ import typing
 
 import pytest
 
-from adventkit.year2017 import d01_inverse_captcha
+from adventkit.year2017 import (
+    d01_inverse_captcha,
+    d02_corruption_checksum,
+)
 
 
 class Case(typing.NamedTuple):
@@ -20,7 +23,10 @@ class Case(typing.NamedTuple):
 def arg_combinations():
     """Return combinations of argument values for parametrizing the test."""
 
-    values = [(d01_inverse_captcha, 2017, 1)]
+    values = [
+        (d01_inverse_captcha, 2017, 1),
+        (d02_corruption_checksum, 2017, 2),
+    ]
     for module, year, day in values:
         _, _, puzzle_label = module.__name__.partition("_")
         test_id = f"{year}, day {day}: {puzzle_label}"
