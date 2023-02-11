@@ -12,6 +12,6 @@ def solve(puzzle_input):
 
 def quotient(row):
     for a, b in itertools.permutations(row, 2):
-        if a % b == 0:
+        if b != 0 and a % b == 0:
             return a // b
     raise ValueError("can't evenly divide any two values")
