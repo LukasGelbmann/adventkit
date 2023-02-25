@@ -1,4 +1,4 @@
-CASE 1: basic
+CASE 1: basic example
 ------INPUT---------
 52122215
 ------ANSWERS-------
@@ -6,7 +6,7 @@ CASE 1: basic
 6
 ----------------------------------------
 
-CASE 2: empty
+CASE 2: no digits
 ------INPUT---------
 
 ------ANSWERS-------
@@ -14,7 +14,7 @@ CASE 2: empty
 0
 ----------------------------------------
 
-CASE 3: all_digits
+CASE 3: all digits
 ------INPUT---------
 0011223344556677889900112233445566778899
 ------ANSWERS-------
