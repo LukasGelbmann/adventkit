@@ -1,6 +1,7 @@
 """Tests of functionality of puzzle solvers."""
 
 import pathlib
+import re
 import typing
 
 import pytest
@@ -30,14 +31,14 @@ def arg_combinations():
     for module, year, day in values:
         _, _, puzzle_label = module.__name__.partition("_")
         test_id = f"{year}, day {day}: {puzzle_label}"
-        yield pytest.param(module.solve, year, day, id=test_id)
+        yield pytest.param(module.solve, year, day, puzzle_label, id=test_id)
 
 
-@pytest.mark.parametrize("solve,year,day", arg_combinations())
-def test(solve, year, day, capsys, subtests):
+@pytest.mark.parametrize("solve,year,day,puzzle_label", arg_combinations())
+def test(solve, year, day, puzzle_label, capsys, subtests):
     """Test the functionality of a solver."""
 
-    for case in get_cases(year, day):
+    for case in get_cases(year, day, puzzle_label):
         with subtests.test(f"case {case.key}: {case.label}"):
             try:
                 solve(case.data)
@@ -48,34 +49,38 @@ def test(solve, year, day, capsys, subtests):
             assert result == case.expected, f"case {case.key} ({case.label})"
 
 
-def get_cases(year, day):
-    """Return an iterable of test cases."""
+def get_cases(year, day, puzzle_label):
+    """Return a list of test cases."""
 
     tests_root = pathlib.Path(__file__).parent
-    folder = tests_root / f"year{year}" / f"day{day:02}"
-    in_paths = []
-    out_paths = []
-    for path in sorted(folder.iterdir()):
-        in_key = len(in_paths) + 1
-        out_key = len(out_paths) + 1
-        if path.match(f"case{in_key:02}_*_in.txt"):
-            in_paths.append(path)
-        elif path.match(f"case{out_key:02}_*_out.txt"):
-            out_paths.append(path)
-        elif not path.match(".*"):
-            raise RuntimeError(f"unexpected filename: {path.name!r}")
+    path = tests_root / f"year{year}" / f"day{day:02}_{puzzle_label}.txt"
+    with open(path, encoding="utf-8") as file:
+        file_text = file.read()
 
-    for key, (in_path, out_path) in enumerate(zip(in_paths, out_paths), 1):
-        in_case_name, _, _ = in_path.stem.rpartition("_")
-        out_case_name, _, _ = out_path.stem.rpartition("_")
-        if in_case_name != out_case_name:
-            raise RuntimeError(f"filenames are mismatched for case {key}")
-        _, _, label = in_case_name.partition("_")
-        with open(in_path, encoding="utf-8") as in_file:
-            data = in_file.read()
-        with open(out_path, encoding="utf-8") as out_file:
-            expected = out_file.read()
-        yield Case(key, label, data, expected)
+    # We expect at least one test case, and re.split() always returns at least
+    # one item.
+    texts = re.split(r"^-{40}\n\n", file_text, flags=re.MULTILINE)
+    return [parse_case(text, key) for key, text in enumerate(texts, start=1)]
 
-    if len(in_paths) != len(out_paths) or not in_paths:
-        raise RuntimeError("test cases are incomplete")
+
+def parse_case(text, key):
+    """Parse and return a test case."""
+
+    first_line, _, _ = text.partition("\n")
+    prefix = f"CASE {key}: "
+    if not first_line.startswith(prefix):
+        raise ValueError(f"case {key} has unexpected start {first_line!r}")
+    label = first_line[len(prefix) :]
+
+    # There may optionally be a note before the input starts.
+    parts = re.split(r"^------INPUT---------\n", text, flags=re.MULTILINE)
+    if len(parts) != 2:
+        raise ValueError(f"input header missing or repeated for case {key}")
+    _, essence = parts
+
+    values = re.split(r"^------ANSWERS-------\n", essence, flags=re.MULTILINE)
+    if len(values) != 2:
+        raise ValueError(f"answers header missing or repeated for case {key}")
+    data, expected = values
+
+    return Case(key, label, data, expected)
