@@ -57,9 +57,13 @@ def get_cases(year, day, puzzle_label):
     with open(path, encoding="utf-8") as file:
         file_text = file.read()
 
+    # There may optionally be some notes before the cases start.
+    sections = re.split(r"^={40}\n\n", file_text, flags=re.MULTILINE)
+    cases_section = sections[-1]
+
     # We expect at least one test case, and re.split() always returns at least
     # one item.
-    texts = re.split(r"^-{40}\n\n", file_text, flags=re.MULTILINE)
+    texts = re.split(r"^-{40}\n\n", cases_section, flags=re.MULTILINE)
     return [parse_case(text, key) for key, text in enumerate(texts, start=1)]
 
 
