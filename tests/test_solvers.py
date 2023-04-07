@@ -9,6 +9,7 @@ import pytest
 from adventkit.year2017 import (
     d01_inverse_captcha,
     d02_corruption_checksum,
+    d03_spiral_memory,
 )
 
 
@@ -27,6 +28,7 @@ def arg_combinations():
     values = [
         (d01_inverse_captcha, 2017, 1),
         (d02_corruption_checksum, 2017, 2),
+        (d03_spiral_memory, 2017, 3),
     ]
     for module, year, day in values:
         _, _, puzzle_label = module.__name__.partition("_")
