@@ -69,7 +69,7 @@ def get_cases(year, day, puzzle_label):
     # parsing routine rejects input where this can't be easily verified.
 
     tests_root = pathlib.Path(__file__).parent
-    path = tests_root / f"year{year}" / f"day{day:02}_{puzzle_label}.txt"
+    path = tests_root / f"year{year}" / f"day{day:02}_{puzzle_label}.md"
     with open(path, encoding="utf-8") as file:
         file_text = file.read()
 
