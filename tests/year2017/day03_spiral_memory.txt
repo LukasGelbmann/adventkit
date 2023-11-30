@@ -12,7 +12,7 @@ The stored values:
 
 ========================================
 
-CASE 1: before a corner
+CASE 1: Before a corner
 ------INPUT---------
 9
 ------ANSWERS-------
@@ -20,7 +20,7 @@ CASE 1: before a corner
 10
 ----------------------------------------
 
-CASE 2: corner
+CASE 2: Corner
 ------INPUT---------
 10
 ------ANSWERS-------
@@ -28,7 +28,7 @@ CASE 2: corner
 11
 ----------------------------------------
 
-CASE 3: after a corner
+CASE 3: After a corner
 ------INPUT---------
 11
 ------ANSWERS-------
@@ -36,7 +36,7 @@ CASE 3: after a corner
 23
 ----------------------------------------
 
-CASE 4: first square
+CASE 4: First square
 ------INPUT---------
 1
 ------ANSWERS-------

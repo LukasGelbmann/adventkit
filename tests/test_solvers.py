@@ -41,7 +41,7 @@ def test(solve, year, day, puzzle_label, capsys, subtests):
     """Test the functionality of a solver."""
 
     for case in get_cases(year, day, puzzle_label):
-        with subtests.test(f"case {case.key}: {case.label}"):
+        with subtests.test(f"Case {case.key}: {case.label}"):
             try:
                 solve(case.data)
             finally:

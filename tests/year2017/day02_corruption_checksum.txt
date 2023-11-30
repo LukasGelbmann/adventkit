@@ -1,4 +1,4 @@
-CASE 1: basic example
+CASE 1: Basic example
 ------INPUT---------
 11	10	100
 12	14	9	6	5
@@ -9,14 +9,14 @@ CASE 1: basic example
 19
 ----------------------------------------
 
-CASE 2: no rows
+CASE 2: No rows
 ------INPUT---------
 ------ANSWERS-------
 0
 0
 ----------------------------------------
 
-CASE 3: identical pairs
+CASE 3: Identical pairs
 ------INPUT---------
 6	7	7
 5	5	8	9
@@ -27,7 +27,7 @@ CASE 3: identical pairs
 13
 ----------------------------------------
 
-CASE 4: negative numbers
+CASE 4: Negative numbers
 ------INPUT---------
 -4	-3	-2
 -7	1
@@ -40,7 +40,7 @@ CASE 4: negative numbers
 -13
 ----------------------------------------
 
-CASE 5: zeros
+CASE 5: Zeros
 ------INPUT---------
 6	0
 0	1
