@@ -1,5 +1,5 @@
 from adventkit import grids, helpers, parse
-from adventkit.year2019.d09_sensor_boost import run
+from adventkit.year2019.day09_sensor_boost import run
 
 
 BLACK = 0

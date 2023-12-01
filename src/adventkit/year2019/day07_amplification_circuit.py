@@ -1,7 +1,7 @@
 import itertools
 
 from adventkit import helpers, parse
-from adventkit.year2019.d05_chance_of_asteroids import run_basic
+from adventkit.year2019.day05_chance_of_asteroids import run_basic
 
 
 def solve(puzzle_input):

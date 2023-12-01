@@ -99,7 +99,7 @@ run_day() {
 
     year_="${4##*/year}"
     year_="${year_%%/*}"
-    day_="${4##*/d}"
+    day_="${4##*/day}"
     day_="${day_#0}"
     day_="${day_%%_*}"
 
@@ -198,11 +198,11 @@ main() {
 
     if [ "$year" ]; then
         year_dir="year${year}"
-        for program in "$base_path/adventkit/$year_dir"/d??*.py; do
+        for program in "$base_path/adventkit/$year_dir"/day??*.py; do
             run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     else
-        for program in "$base_path/adventkit/"year????/d??*.py; do
+        for program in "$base_path/adventkit/"year????/day??*.py; do
             run_day "$mode" "$fast" "$base_path" "$program" || return
         done
     fi

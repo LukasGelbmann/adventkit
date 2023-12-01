@@ -32,7 +32,7 @@ def import_solver(package, day):
     situation in order to distinguish it from an error occurring during import.
     """
 
-    prefix = 'd' + day
+    prefix = 'day' + day
     for module_info in pkgutil.iter_modules(package.__path__):
         if module_info.name.startswith(prefix):
             name = package.__name__ + '.' + module_info.name
