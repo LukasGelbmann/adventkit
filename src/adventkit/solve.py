@@ -46,7 +46,7 @@ def read_input(year, day):
     Raise an OSError if the input file can't be read.
     """
 
-    filename = 'd' + day + '.txt'
+    filename = 'day' + day + '.txt'
     path = os.path.join('input', 'year' + year, filename)
     with open(path, encoding='ascii') as file:
         return file.read()
