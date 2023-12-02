@@ -2,7 +2,7 @@ from adventkit import grids, parse
 
 
 def solve(data):
-    path_a, path_b = parse.mixed_tables(data, row_sep=',')
+    path_a, path_b = parse.mixed_tables(data, row_sep=",")
     visits_a = visits(path_a)
     visits_b = visits(path_b)
     intersections = {square for square in visits_a if square in visits_b}
@@ -28,10 +28,10 @@ def squares(path):
     square = 0, 0
     for direction, num_steps in path:
         move = {
-            'L': grids.move_left,
-            'R': grids.move_right,
-            'U': grids.move_up,
-            'D': grids.move_down,
+            "L": grids.move_left,
+            "R": grids.move_right,
+            "U": grids.move_up,
+            "D": grids.move_down,
         }[direction]
         for _ in range(num_steps):
             square = move(square)

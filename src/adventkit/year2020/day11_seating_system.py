@@ -2,7 +2,7 @@ from adventkit import grids
 
 
 def solve(data):
-    seats, size = grids.select_and_measure('L', data)
+    seats, size = grids.select_and_measure("L", data)
 
     adjacent = {seat: set(seat.neighbors()) & seats for seat in seats}
     print(final_count(seats, adjacent, crowded=4))

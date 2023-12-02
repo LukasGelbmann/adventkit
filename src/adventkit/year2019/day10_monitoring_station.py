@@ -5,7 +5,7 @@ from adventkit import grids, helpers
 
 
 def solve(data):
-    asteroids = grids.select('#', data)
+    asteroids = grids.select("#", data)
 
     max_count, station = max(
         (count_detectable(location, asteroids), location)

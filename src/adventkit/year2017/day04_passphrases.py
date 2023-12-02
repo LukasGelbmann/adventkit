@@ -12,7 +12,7 @@ def solve(data):
 
     anagram_free_count = 0
     for phrase in phrases:
-        tidied_phrase = [''.join(sorted(word)) for word in phrase]
+        tidied_phrase = ["".join(sorted(word)) for word in phrase]
         if all_words_unique(tidied_phrase):
             anagram_free_count += 1
     print(anagram_free_count)

@@ -41,7 +41,7 @@ class Vector2D(typing.NamedTuple):
     y: numbers.Real
 
     def __str__(self):
-        return f'(x={self.x}, y={self.y})'
+        return f"(x={self.x}, y={self.y})"
 
     def __add__(self, other):
         """Return self+other, using vector addition."""
@@ -246,7 +246,7 @@ def show(grid, symbols):
     y_range = range(min(visible_y), max(visible_y) + 1)
     for y in y_range:
         row = (grid.get((x, y)) for x in x_range)
-        print(' '.join(symbols.get(value, ' ') for value in row))
+        print(" ".join(symbols.get(value, " ") for value in row))
 
 
 def move_left(point):

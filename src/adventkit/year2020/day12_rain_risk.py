@@ -12,18 +12,18 @@ def solve(data):
 def final_distance(instructions, step, waypoint_mode=False):
     pos = grids.ORIGIN_2D
     for action, value in instructions:
-        if action == 'L':
+        if action == "L":
             step = step.rotate_left(value // 90)
-        elif action == 'R':
+        elif action == "R":
             step = step.rotate_right(value // 90)
-        elif action == 'F':
+        elif action == "F":
             pos += step * value
         else:
             direction = {
-                'N': grids.NORTH,
-                'S': grids.SOUTH,
-                'E': grids.EAST,
-                'W': grids.WEST,
+                "N": grids.NORTH,
+                "S": grids.SOUTH,
+                "E": grids.EAST,
+                "W": grids.WEST,
             }[action]
             if waypoint_mode:
                 step += direction * value

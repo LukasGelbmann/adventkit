@@ -4,21 +4,21 @@ import re
 
 def solve(data):
     rules = parse_rules(data)
-    print(count_containers_of('shiny gold', rules))
+    print(count_containers_of("shiny gold", rules))
 
     @functools.lru_cache(maxsize=None)
     def count_bags_in(color):
         contents = rules[color]
         return sum(n * (1 + count_bags_in(inner)) for n, inner in contents)
 
-    print(count_bags_in('shiny gold'))
+    print(count_bags_in("shiny gold"))
 
 
 def parse_rules(data):
     rules = {}
     for line in data.splitlines():
-        color, contents_text = line.split(' bags contain ')
-        items = re.findall(r'(\d+) ([^,]+) bag', contents_text)
+        color, contents_text = line.split(" bags contain ")
+        items = re.findall(r"(\d+) ([^,]+) bag", contents_text)
         rules[color] = [(int(n), inner) for n, inner in items]
     return rules
 

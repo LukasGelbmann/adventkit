@@ -2,7 +2,7 @@ import string
 
 
 def solve(data):
-    groups = [group.splitlines() for group in data.split('\n\n')]
+    groups = [group.splitlines() for group in data.split("\n\n")]
     print(sum(count_any_yes(responses) for responses in groups))
     print(sum(count_all_yes(responses) for responses in groups))
 

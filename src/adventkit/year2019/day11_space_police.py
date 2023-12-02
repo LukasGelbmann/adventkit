@@ -13,7 +13,7 @@ def solve(data):
     print(len(painted_panels(program)))
 
     identifier = painted_panels(program, start_on_white=True)
-    grids.show(identifier, {WHITE: '#'})
+    grids.show(identifier, {WHITE: "#"})
 
 
 def painted_panels(program, start_on_white=False):

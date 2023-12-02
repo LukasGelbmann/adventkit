@@ -2,7 +2,7 @@ from adventkit import grids, helpers
 
 
 def solve(data):
-    trees, size = grids.select_and_measure('#', data)
+    trees, size = grids.select_and_measure("#", data)
     slopes = (3, 1), (1, 1), (5, 1), (7, 1), (1, 2)
     counts = [count_encounters(slope, trees, size) for slope in slopes]
     print(counts[0])

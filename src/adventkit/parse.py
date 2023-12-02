@@ -13,7 +13,7 @@ def ints(text):
     Example: ints('-3 T-4,5-10') --> [-3, -4, 5, 10]
     """
 
-    pattern = r'(?<!\d)-?\d+'
+    pattern = r"(?<!\d)-?\d+"
     return [int(match) for match in re.findall(pattern, text, re.ASCII)]
 
 
@@ -23,7 +23,7 @@ def strings(text):
     Example: strings('53_7A,a735') --> ['53', '7A', 'a735']
     """
 
-    return re.findall(r'[A-Za-z\d]+', text, re.ASCII)
+    return re.findall(r"[A-Za-z\d]+", text, re.ASCII)
 
 
 def mixed_values(text):
@@ -36,9 +36,9 @@ def mixed_values(text):
     Example: mixed_values('-1-99 A7: Q-8,-9') --> [-1, 99, 'A', 7, 'Q', 8, -9]
     """
 
-    pattern = r'(?:(?<![A-Za-z\d])-)?\d+|[A-Za-z]+'
+    pattern = r"(?:(?<![A-Za-z\d])-)?\d+|[A-Za-z]+"
     return [
-        int(match) if match[0] in '0123456789-' else match
+        int(match) if match[0] in "0123456789-" else match
         for match in re.findall(pattern, text, re.ASCII)
     ]
 

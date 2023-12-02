@@ -32,10 +32,10 @@ def import_solver(package, day):
     situation in order to distinguish it from an error occurring during import.
     """
 
-    prefix = 'day' + day
+    prefix = "day" + day
     for module_info in pkgutil.iter_modules(package.__path__):
         if module_info.name.startswith(prefix):
-            name = package.__name__ + '.' + module_info.name
+            name = package.__name__ + "." + module_info.name
             return importlib.import_module(name)
     return None
 
@@ -46,16 +46,16 @@ def read_input(year, day):
     Raise an OSError if the input file can't be read.
     """
 
-    filename = 'day' + day + '.txt'
-    path = os.path.join('input', 'year' + year, filename)
-    with open(path, encoding='ascii') as file:
+    filename = "day" + day + ".txt"
+    path = os.path.join("input", "year" + year, filename)
+    with open(path, encoding="ascii") as file:
         return file.read()
 
 
 def year_arg(value):
     """Validate the 'year' command-line argument."""
 
-    if not re.fullmatch(r'\d{4}', value, re.ASCII):
+    if not re.fullmatch(r"\d{4}", value, re.ASCII):
         raise argparse.ArgumentTypeError("invalid year {!r}".format(value))
     return value
 
@@ -63,7 +63,7 @@ def year_arg(value):
 def day_arg(value):
     """Validate and reformat the 'day' command-line argument."""
 
-    if not re.fullmatch(r'\d{1,2}', value, re.ASCII):
+    if not re.fullmatch(r"\d{1,2}", value, re.ASCII):
         raise argparse.ArgumentTypeError("invalid day {!r}".format(value))
     return value.zfill(2)
 
@@ -75,8 +75,8 @@ def parse_args():
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('year', type=year_arg, help="e.g., 2019")
-    parser.add_argument('day', type=day_arg, help="day of the Advent calendar")
+    parser.add_argument("year", type=year_arg, help="e.g., 2019")
+    parser.add_argument("day", type=day_arg, help="day of the Advent calendar")
     return parser.parse_args()
 
 
@@ -87,7 +87,7 @@ def main():
     args = parse_args()
 
     try:
-        package = importlib.import_module('adventkit.year' + args.year)
+        package = importlib.import_module("adventkit.year" + args.year)
     except ImportError as exc:
         print("Error:", exc, file=sys.stderr)
         return 1
