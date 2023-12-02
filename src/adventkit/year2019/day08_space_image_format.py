@@ -5,8 +5,8 @@ WIDTH = 25
 HEIGHT = 6
 
 
-def solve(puzzle_input):
-    image_data = puzzle_input.strip()
+def solve(data):
+    image_data = data.strip()
     layers = list(helpers.chunked(image_data, WIDTH * HEIGHT))
 
     chosen_layer = min(layers, key=lambda layer: layer.count('0'))

@@ -5,8 +5,8 @@ import string
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    lower_limit, upper_limit = parse.strings(puzzle_input)
+def solve(data):
+    lower_limit, upper_limit = parse.strings(data)
     min_password = tuple(lower_limit)
     max_password = tuple(upper_limit)
 

@@ -1,8 +1,8 @@
 from adventkit import helpers, parse
 
 
-def solve(puzzle_input):
-    direct_orbits = parse.string_rows(puzzle_input)
+def solve(data):
+    direct_orbits = parse.string_rows(data)
     print(count_orbits(direct_orbits))
 
     parent_by_child = {child: parent for parent, child in direct_orbits}

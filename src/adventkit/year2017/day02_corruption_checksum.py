@@ -3,8 +3,8 @@ import itertools
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    rows = parse.int_rows(puzzle_input)
+def solve(data):
+    rows = parse.int_rows(data)
     checksum = sum(max(row) - min(row) for row in rows)
     print(checksum)
     print(sum(quotient(row) for row in rows))

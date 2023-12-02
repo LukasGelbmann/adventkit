@@ -1,8 +1,8 @@
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    program = parse.ints(puzzle_input)
+def solve(data):
+    program = parse.ints(data)
     print(output(program, noun=12, verb=2))
     print(find_input(program))
 

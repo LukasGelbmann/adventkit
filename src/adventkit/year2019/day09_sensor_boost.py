@@ -2,8 +2,8 @@ from adventkit import parse
 from adventkit.year2019.day05_chance_of_asteroids import arg_addr, run_basic
 
 
-def solve(puzzle_input):
-    program = parse.ints(puzzle_input)
+def solve(data):
+    program = parse.ints(data)
     for input_value in 1, 2:
         output = next(run(program, [input_value]))
         print(output)

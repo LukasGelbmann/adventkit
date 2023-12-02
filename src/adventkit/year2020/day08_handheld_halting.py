@@ -1,8 +1,8 @@
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    instructions = parse.mixed_rows(puzzle_input)
+def solve(data):
+    instructions = parse.mixed_rows(data)
     output, _ = run(instructions)
     print(output)
     print(fixed_output(instructions))

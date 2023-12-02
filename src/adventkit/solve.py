@@ -41,7 +41,7 @@ def import_solver(package, day):
 
 
 def read_input(year, day):
-    """Return the input for a day of the Advent calendar.
+    """Return the input data for a day of the Advent calendar.
 
     Raise an OSError if the input file can't be read.
     """
@@ -101,10 +101,10 @@ def main():
         return 1
 
     try:
-        puzzle_input = read_input(args.year, args.day)
+        data = read_input(args.year, args.day)
     except OSError as exc:
         print("Error:", exc, file=sys.stderr)
         return 1
 
-    module.solve(puzzle_input)
+    module.solve(data)
     return 0

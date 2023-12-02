@@ -1,8 +1,8 @@
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    rows = parse.mixed_rows(puzzle_input)
+def solve(data):
+    rows = parse.mixed_rows(data)
 
     first_count = 0
     for min_appearances, max_appearances, letter, password in rows:

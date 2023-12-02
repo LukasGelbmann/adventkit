@@ -3,8 +3,8 @@ import itertools
 from adventkit import helpers, parse
 
 
-def solve(puzzle_input):
-    entries = parse.ints(puzzle_input)
+def solve(data):
+    entries = parse.ints(data)
     print(find_product(entries, count=2))
     print(find_product(entries, count=3))
 

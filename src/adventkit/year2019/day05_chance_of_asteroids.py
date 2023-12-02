@@ -3,8 +3,8 @@ import collections
 from adventkit import helpers, parse
 
 
-def solve(puzzle_input):
-    program = parse.ints(puzzle_input)
+def solve(data):
+    program = parse.ints(data)
 
     first_outputs = run_basic(program, inputs=[1])
     print(helpers.last(first_outputs))

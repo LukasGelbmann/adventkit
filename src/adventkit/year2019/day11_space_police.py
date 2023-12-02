@@ -8,8 +8,8 @@ WHITE = 1
 LEFT = 0
 
 
-def solve(puzzle_input):
-    program = parse.ints(puzzle_input)
+def solve(data):
+    program = parse.ints(data)
     print(len(painted_panels(program)))
 
     identifier = painted_panels(program, start_on_white=True)

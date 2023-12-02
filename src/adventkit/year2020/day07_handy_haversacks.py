@@ -2,8 +2,8 @@ import functools
 import re
 
 
-def solve(puzzle_input):
-    rules = parse_rules(puzzle_input)
+def solve(data):
+    rules = parse_rules(data)
     print(count_containers_of('shiny gold', rules))
 
     @functools.lru_cache(maxsize=None)
@@ -14,9 +14,9 @@ def solve(puzzle_input):
     print(count_bags_in('shiny gold'))
 
 
-def parse_rules(puzzle_input):
+def parse_rules(data):
     rules = {}
-    for line in puzzle_input.splitlines():
+    for line in data.splitlines():
         color, contents_text = line.split(' bags contain ')
         items = re.findall(r'(\d+) ([^,]+) bag', contents_text)
         rules[color] = [(int(n), inner) for n, inner in items]

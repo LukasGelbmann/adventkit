@@ -1,8 +1,8 @@
 from adventkit import grids, parse
 
 
-def solve(puzzle_input):
-    path_a, path_b = parse.mixed_tables(puzzle_input, row_sep=',')
+def solve(data):
+    path_a, path_b = parse.mixed_tables(data, row_sep=',')
     visits_a = visits(path_a)
     visits_b = visits(path_b)
     intersections = {square for square in visits_a if square in visits_b}

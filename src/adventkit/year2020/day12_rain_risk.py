@@ -1,8 +1,8 @@
 from adventkit import grids, parse
 
 
-def solve(puzzle_input):
-    instructions = parse.mixed_rows(puzzle_input)
+def solve(data):
+    instructions = parse.mixed_rows(data)
     print(final_distance(instructions, step=grids.EAST))
 
     waypoint = grids.EAST * 10 + grids.NORTH

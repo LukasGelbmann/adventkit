@@ -4,8 +4,8 @@ import math
 from adventkit import grids, helpers
 
 
-def solve(puzzle_input):
-    asteroids = grids.select('#', puzzle_input)
+def solve(data):
+    asteroids = grids.select('#', data)
 
     max_count, station = max(
         (count_detectable(location, asteroids), location)

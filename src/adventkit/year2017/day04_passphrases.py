@@ -1,8 +1,8 @@
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    phrases = parse.string_rows(puzzle_input)
+def solve(data):
+    phrases = parse.string_rows(data)
 
     duplicate_free_count = 0
     for phrase in phrases:

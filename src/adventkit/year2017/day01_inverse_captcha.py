@@ -1,5 +1,5 @@
-def solve(puzzle_input):
-    captcha = puzzle_input.strip()
+def solve(data):
+    captcha = data.strip()
     print(solution(captcha, offset=1))
     print(solution(captcha, offset=len(captcha) // 2))
 

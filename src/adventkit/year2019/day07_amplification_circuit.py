@@ -4,8 +4,8 @@ from adventkit import helpers, parse
 from adventkit.year2019.day05_chance_of_asteroids import run_basic
 
 
-def solve(puzzle_input):
-    program = parse.ints(puzzle_input)
+def solve(data):
+    program = parse.ints(data)
 
     sequence_setups = itertools.permutations(range(5))
     print(max(sequence_output(program, setup) for setup in sequence_setups))

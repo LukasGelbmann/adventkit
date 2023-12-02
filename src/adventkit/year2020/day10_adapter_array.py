@@ -3,8 +3,8 @@ import collections
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    adapters = parse.ints(puzzle_input)
+def solve(data):
+    adapters = parse.ints(data)
     joltages = sorted(adapters) + [max(adapters) + 3]
 
     diffs = [b - a for a, b in zip([0] + joltages, joltages)]

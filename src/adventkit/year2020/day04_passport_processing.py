@@ -1,11 +1,11 @@
 import re
 
 
-def solve(puzzle_input):
+def solve(data):
     required = {'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'}
     simple_count = 0
     better_count = 0
-    for passport in puzzle_input.split('\n\n'):
+    for passport in data.split('\n\n'):
         pairs = (item.split(':') for item in passport.split())
         fields = {key: value for key, value in pairs if key in required}
         if fields.keys() == required:

@@ -1,8 +1,8 @@
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    masses = parse.ints(puzzle_input)
+def solve(data):
+    masses = parse.ints(data)
     print(sum(fuel_needed(mass) for mass in masses))
     print(sum(total_fuel(mass) for mass in masses))
 

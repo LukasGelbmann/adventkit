@@ -3,8 +3,8 @@ import itertools
 from adventkit import grids
 
 
-def solve(puzzle_input):
-    number = int(puzzle_input)
+def solve(data):
+    number = int(data)
     square = locate_square(square_id=number)
     print(square.manhattan_distance(grids.ORIGIN_2D))
     print(first_value_above(threshold=number))

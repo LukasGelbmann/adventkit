@@ -3,8 +3,8 @@ import itertools
 from adventkit import parse
 
 
-def solve(puzzle_input):
-    numbers = parse.ints(puzzle_input)
+def solve(data):
+    numbers = parse.ints(data)
     invalid = find_invalid(numbers)
     print(invalid)
     print(weakness(numbers, invalid))
